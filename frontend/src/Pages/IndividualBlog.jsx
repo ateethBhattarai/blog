@@ -87,18 +87,22 @@ const IndividualBlog = () => {
           </Typography>
 
           {user?.username === blogData?.author?.username && (
-            <Box sx={{ textAlign: "center", mb: 2, mt: 1 }}>
-              <Link to={`/blog/edit/${blogData._id}`}>
-                <Button variant="contained">Edit</Button>
-              </Link>
-            </Box>
-          )}
+            <>
+              {/* for edit purpose */}
+              <Box sx={{ textAlign: "center", mb: 2, mt: 1 }}>
+                <Link to={`/blog/edit/${blogData._id}`}>
+                  <Button variant="contained">Edit</Button>
+                </Link>
+              </Box>
 
-          <Box sx={{ textAlign: "center", mb: 2, mt: 1 }}>
-            <Button variant="contained" color="error" onClick={deleteBlog}>
-              Delete
-            </Button>
-          </Box>
+              {/* for deletion purpose */}
+              <Box sx={{ textAlign: "center", mb: 2, mt: 1 }}>
+                <Button variant="contained" color="error" onClick={deleteBlog}>
+                  Delete
+                </Button>
+              </Box>
+            </>
+          )}
         </Box>
         <Box
           sx={{ maxHeight: 380, borderRadius: 1.5, mt: 2, overflow: "hidden" }}

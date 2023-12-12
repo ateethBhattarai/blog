@@ -18,7 +18,7 @@ const individualBlog = async (req, res) => {
       res.status(404).send("blog not found.");
       return;
     }
-    console.log(blogData);
+    // console.log(blogData);
     res.json(blogData);
   } catch (error) {
     res.status(404).send("blog not found.");
