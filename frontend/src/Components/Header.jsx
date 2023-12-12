@@ -51,6 +51,10 @@ function Header() {
     }
   };
 
+  const userBlogs = () => {
+    console.log("display blog created by " + user.username);
+  };
+
   const settings = [
     {
       name: "Create blog",
@@ -58,8 +62,13 @@ function Header() {
         navigate("/create");
       },
     },
-    { name: "Profile", method: "s" },
-    { name: "Dashboard", method: "s" },
+    { name: "Profile", method: () => {} },
+    {
+      name: "My blogs",
+      method: () => {
+        userBlogs();
+      },
+    },
     {
       name: "Logout",
       method: () => {

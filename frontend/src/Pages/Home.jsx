@@ -26,11 +26,12 @@ const Home = () => {
         <Loader />
       ) : (
         <>
-          <Carausal />
+          {/* <Carausal /> */}
           <Paper sx={{ mt: 2, p: 2, minHeight: 600 }} elevation={3}>
             <div className="cards">
               {blogData.map((data) => (
                 <Cards
+                  key={data._id}
                   id={data._id}
                   title={data.title}
                   summary={data.summary}

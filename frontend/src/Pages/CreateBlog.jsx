@@ -2,14 +2,18 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UsersContext } from "../ContextAPI/UserContext";
 
 const CreateBlog = () => {
   const navigate = useNavigate();
+
+  const { user } = React.useContext(UsersContext);
 
   const [input, setInput] = useState({
     title: "",
     summary: "",
     description: "",
+    author: user?.id,
   });
 
   const handleChange = (e) => {

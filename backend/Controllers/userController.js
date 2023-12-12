@@ -55,6 +55,7 @@ const login = async (req, res) => {
     {
       email: user.email,
       password: user.password,
+      id: user._id,
       username: user.username,
     },
     process.env.JWT_SECRET_KEY
@@ -62,6 +63,7 @@ const login = async (req, res) => {
   res.cookie("token", token).json({
     message: "logged in",
     email: user.email,
+    id: user._id,
     password: user.password,
     username: user.username,
   });

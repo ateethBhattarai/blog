@@ -73,17 +73,9 @@ export default function Cards({ id, summary, title, createdDate }) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {summary}
+          {summary.split(" ").slice(0, 40).join(" ") + "..."}
         </Typography>
       </CardContent>
-      {/* <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions> */}
     </Card>
   );
 }

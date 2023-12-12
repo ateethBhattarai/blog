@@ -2,9 +2,13 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { UsersContext } from "../ContextAPI/UserContext";
 
 const EditBlog = () => {
   const navigate = useNavigate();
+
+  const { user } = React.useContext(UsersContext);
+
   const { id } = useParams();
 
   const [blogData, setBlogData] = useState();
@@ -47,6 +51,8 @@ const EditBlog = () => {
   if (!blogData) {
     return "";
   }
+
+  !user.email && navigate("/login");
 
   return (
     <Container>

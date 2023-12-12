@@ -72,7 +72,8 @@ export default function Login() {
     }
   };
 
-  user && navigate("/");
+  console.log(user.email);
+  user.email && navigate("/");
 
   return (
     <ThemeProvider theme={defaultTheme}>

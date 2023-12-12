@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use("/", require("./Routers/userRouter"));
 app.use("/", require("./Routers/blogRouter"));
 
-const port = process.env.PORT;
+const port = 8000 || process.env.PORT;
 app.listen(port, () => {
   console.log(`listening at port ${port}...`);
 });

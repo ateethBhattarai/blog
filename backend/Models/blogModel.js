@@ -13,6 +13,11 @@ const blogSchema = mongoose.Schema(
       type: String,
       required: [true, "description required."],
     },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: [true, "author name should be provided for every post."],
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
