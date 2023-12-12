@@ -87,7 +87,15 @@ const IndividualBlog = () => {
           </Typography>
 
           {user?.username === blogData?.author?.username && (
-            <>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 2,
+                flexWrap: "wrap",
+              }}
+            >
               {/* for edit purpose */}
               <Box sx={{ textAlign: "center", mb: 2, mt: 1 }}>
                 <Link to={`/blog/edit/${blogData._id}`}>
@@ -101,7 +109,7 @@ const IndividualBlog = () => {
                   Delete
                 </Button>
               </Box>
-            </>
+            </Box>
           )}
         </Box>
         <Box
