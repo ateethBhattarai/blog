@@ -1,6 +1,7 @@
 const User = require("../Models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { setUser } = require("../Services/auth");
 
 const register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -51,15 +52,12 @@ const login = async (req, res) => {
     return;
   }
 
-  const token = jwt.sign(
-    {
-      email: user.email,
-      password: user.password,
-      id: user._id,
-      username: user.username,
-    },
-    process.env.JWT_SECRET_KEY
-  );
+  const myUser = {
+    ...user,
+    password: user.password,
+  };
+
+  const token = setUser(myUser);
   res.cookie("token", token).json({
     message: "logged in",
     email: user.email,
@@ -75,14 +73,17 @@ const logout = (req, res) => {
 
 const current = (req, res) => {
   const { token } = req.cookies;
-  // if (token) {
   try {
     const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
     res.json(data);
   } catch (error) {
     res.send(error);
   }
-  // }
 };
 
-module.exports = { register, login, logout, current };
+const getAllUsers = async (req, res) => {
+  const user = await User.find();
+  res.json(user);
+};
+
+module.exports = { register, login, logout, current, getAllUsers };
